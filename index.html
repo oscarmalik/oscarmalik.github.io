@@ -165,5 +165,38 @@
             <button type="submit">Submit</button>
         </form>
     </section>
+    <script>
+    // JavaScript function to change the first sentence of the "About Me" section
+    // with a random sentence from a list of 10 different sentences.
+    document.addEventListener("DOMContentLoaded", function() {
+        const aboutParagraph = document.getElementById("aboutParagraph");
+        const sentences = [
+            "I am passionate about technology.",
+            "In my free time, I enjoy hiking and photography.",
+            "I am currently learning web development.",
+            "I love reading books and discovering new ideas.",
+            "One of my hobbies is playing the guitar.",
+            "I enjoy trying out new cuisines.",
+            "I am a lifelong learner.",
+            "I am fascinated by space exploration.",
+            "I believe in the power of teamwork.",
+            "I am an advocate for environmental sustainability."
+        ];
+
+        function getRandomSentence() {
+            return sentences[Math.floor(Math.random() * sentences.length)];
+        }
+
+        function updateAboutParagraph() {
+            const randomSentence = getRandomSentence();
+            aboutParagraph.textContent = randomSentence;
+        }
+
+        updateAboutParagraph(); // Update the paragraph on page load
+
+        // Optional: If you want to change the sentence periodically, uncomment the line below.
+        // setInterval(updateAboutParagraph, 5000); // Change the sentence every 5 seconds (adjust the duration as needed)
+    });
+    </script>
 </body>
 </html>
