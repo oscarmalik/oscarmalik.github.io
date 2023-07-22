@@ -13,23 +13,22 @@
     /* Styling the area of the slides */
     #slideshow {
         overflow: hidden;
-        height: 300px; /* Updated height */
-        width: 400px; /* Updated width */
-        margin: 20px 0; /* Add margin to move the slideshow to the top left corner */
-        float: left; /* Float the slideshow to the left */
+        height: 510px;
+        width: 728px;
+        margin: 0 auto;
     }
 
-    /* Style each of the slides with a fixed width and height */
+    /* Style each of the sides with a fixed width and height */
     .slide {
         float: left;
-        height: 300px; /* Updated height */
-        width: 400px; /* Updated width */
+        height: 510px;
+        width: 728px;
     }
 
     /* Add animation to the slides */
     .slide-wrapper {
         /* Calculate the total width on the basis of number of slides */
-        width: calc(400px * 4); /* Updated width */
+        width: calc(728px * 4);
         /* Specify the animation with the duration and speed */
         animation: slide 10s ease infinite;
     }
@@ -58,13 +57,13 @@
             margin-left: 0px;
         }
         40% {
-            margin-left: calc(-400px * 1); /* Updated width */
+            margin-left: calc(-728px * 1);
         }
         60% {
-            margin-left: calc(-400px * 2); /* Updated width */
+            margin-left: calc(-728px * 2);
         }
         80% {
-            margin-left: calc(-400px * 3); /* Updated width */
+            margin-left: calc(-728px * 3);
         }
     }
 
