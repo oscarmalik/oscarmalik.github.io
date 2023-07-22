@@ -9,64 +9,50 @@
         text-align: center;
         font-size: 50;
     }
-     
+
     /* Styling the area of the slides */
-     
     #slideshow {
         overflow: hidden;
         height: 510px;
         width: 728px;
         margin: 0 auto;
     }
-     
-    /* Style each of the sides
-    with a fixed width and height */
-     
+
+    /* Style each of the sides with a fixed width and height */
     .slide {
         float: left;
         height: 510px;
         width: 728px;
     }
-     
+
     /* Add animation to the slides */
-     
     .slide-wrapper {
-         
-        /* Calculate the total width on the
-      basis of number of slides */
+        /* Calculate the total width on the basis of number of slides */
         width: calc(728px * 4);
-         
-        /* Specify the animation with the
-      duration and speed */
+        /* Specify the animation with the duration and speed */
         animation: slide 10s ease infinite;
     }
-     
-    /* Set the background color
-    of each of the slides */
-     
+
+    /* Set the background color of each of the slides */
     .slide:nth-child(1) {
         background: green;
     }
-     
+
     .slide:nth-child(2) {
         background: pink;
     }
-     
+
     .slide:nth-child(3) {
         background: red;
     }
-     
+
     .slide:nth-child(4) {
         background: yellow;
     }
-     
-    /* Define the animation
-    for the slideshow */
-     
+
+    /* Define the animation for the slideshow */
     @keyframes slide {
-         
-        /* Calculate the margin-left for
-      each of the slides */
+        /* Calculate the margin-left for each of the slides */
         20% {
             margin-left: 0px;
         }
@@ -80,17 +66,59 @@
             margin-left: calc(-728px * 3);
         }
     }
+
+    /* Additional styles for About Me and Contact sections */
+    #about {
+        padding: 20px;
+    }
+
+    #contact {
+        padding: 20px;
+    }
+
+    #contactForm {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    #contactForm label,
+    #contactForm input,
+    #contactForm textarea,
+    #contactForm button {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #contactForm button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #contactForm button:hover {
+        background-color: #555;
+    }
     </style>
 </head>
- 
+
 <body>
-     
     <!-- Define the slideshow container -->
     <div id="slideshow">
         <div class="slide-wrapper">
-             
-            <!-- Define each of the slides
-         and write the content -->
+            <!-- Define each of the slides and write the content -->
             <div class="slide">
                 <h1 class="slide-number">
                     one
@@ -113,5 +141,29 @@
             </div>
         </div>
     </div>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Add some information about yourself here.
+            Tell your visitors about your background, interests, and anything you'd like to share.
+        </p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
 </body>
 </html>
