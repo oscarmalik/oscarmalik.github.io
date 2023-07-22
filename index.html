@@ -165,36 +165,5 @@
             <button type="submit">Submit</button>
         </form>
     </section>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Function to handle the form submission
-        function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get the form data
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value;
-
-            // Compose the email body
-            const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-
-            // Open the email client with the form data
-            const mailtoLink = `mailto:maliko1@mcmaster.ca?subject=Contact%20Me%20Form%20Submission&body=${encodeURIComponent(
-                emailBody
-            )}`;
-
-            window.open(mailtoLink);
-
-            // Show a popup message
-            alert("Your message has been sent. Thank you!");
-        }
-
-        // Add a submit event listener to the form
-        const contactForm = document.getElementById("contactForm");
-        contactForm.addEventListener("submit", handleFormSubmit);
-    });
-    </script>
 </body>
 </html>
