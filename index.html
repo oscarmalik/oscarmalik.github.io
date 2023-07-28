@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Oscar's Personal Website</title>
+    <button id="darkModeToggle">Toggle Dark Mode</button>
+
+    <!-- Add a place for the greeting -->
+    <h1 id="greeting"></h1>
+
     <style>
     body {
         font-family: Helvetica, sans-serif;
@@ -198,6 +204,41 @@
         // Optional: If you want to change the sentence periodically, uncomment the line below.
         // setInterval(updateAboutParagraph, 5000); // Change the sentence every 5 seconds (adjust the duration as needed)
     });
+    </script>
+    <script>
+        // Functionality for Dark Mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        let darkMode = false;
+
+        darkModeToggle.addEventListener('click', () => {
+            darkMode = !darkMode;
+            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
+            document.body.style.color = darkMode ? '#fff' : '#333';
+        });
+
+        // Display a greeting based on the current time
+        const greetingElement = document.getElementById('greeting');
+
+        function displayGreeting() {
+            const date = new Date();
+            const hours = date.getHours();
+
+            let greeting;
+            if (hours < 12) {
+                greeting = 'Good Morning!';
+            } else if (hours < 18) {
+                greeting = 'Good Afternoon!';
+            } else {
+                greeting = 'Good Evening!';
+            }
+
+            greetingElement.textContent = greeting;
+        }
+
+        displayGreeting();
+
+        // Optional: If you want to update the greeting periodically, uncomment the line below.
+        // setInterval(displayGreeting, 60000); // Update the greeting every minute
     </script>
 </body>
 </html>
