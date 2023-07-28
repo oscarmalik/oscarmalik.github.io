@@ -3,20 +3,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Oscar's Personal Website</title>
-    <button id="darkModeToggle">Toggle Dark Mode</button>
-
-    <!-- Add a place for the greeting -->
-    <h1 id="greeting"></h1>
-
     <style>
     body {
         font-family: Helvetica, sans-serif;
         padding: 5%;
         text-align: center;
-        font-size: 50px; /* Add 'px' as the unit for font size */
+        font-size: 2em;
     }
 
-    /* Styling the area of the slides */
     #slideshow {
         overflow: hidden;
         height: 510px;
@@ -24,22 +18,17 @@
         margin: 0 auto;
     }
 
-    /* Style each of the sides with a fixed width and height */
     .slide {
         float: left;
         height: 510px;
         width: 728px;
     }
 
-    /* Add animation to the slides */
     .slide-wrapper {
-        /* Calculate the total width on the basis of number of slides */
         width: calc(728px * 4);
-        /* Specify the animation with the duration and speed */
         animation: slide 10s ease infinite;
     }
 
-    /* Set the background color of each of the slides */
     .slide:nth-child(1) {
         background: green;
     }
@@ -56,9 +45,7 @@
         background: yellow;
     }
 
-    /* Define the animation for the slideshow */
     @keyframes slide {
-        /* Calculate the margin-left for each of the slides */
         20% {
             margin-left: 0px;
         }
@@ -73,7 +60,6 @@
         }
     }
 
-    /* Additional styles for About Me and Contact sections */
     #about {
         padding: 20px;
     }
@@ -121,10 +107,10 @@
 </head>
 
 <body>
-    <!-- Define the slideshow container -->
+    <button id="darkModeToggle">Toggle Dark Mode</button>
+    <h1 id="greeting"></h1>
     <div id="slideshow">
         <div class="slide-wrapper">
-            <!-- Define each of the slides and write the content -->
             <div class="slide">
                 <h1 class="slide-number">
                     one
@@ -173,8 +159,6 @@
     </section>
 
     <script>
-    // JavaScript function to change the first sentence of the "About Me" section
-    // with a random sentence from a list of 10 different sentences.
     document.addEventListener("DOMContentLoaded", function() {
         const aboutParagraph = document.getElementById("aboutParagraph");
         const sentences = [
@@ -199,24 +183,17 @@
             aboutParagraph.textContent = randomSentence;
         }
 
-        updateAboutParagraph(); // Update the paragraph on page load
+        updateAboutParagraph();
 
-        // Optional: If you want to change the sentence periodically, uncomment the line below.
-        // setInterval(updateAboutParagraph, 5000); // Change the sentence every 5 seconds (adjust the duration as needed)
-    });
-    </script>
-    <script>
-        // Functionality for Dark Mode
         const darkModeToggle = document.getElementById('darkModeToggle');
         let darkMode = false;
 
         darkModeToggle.addEventListener('click', () => {
             darkMode = !darkMode;
-            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
-            document.body.style.color = darkMode ? '#fff' : '#333';
+            document.documentElement.style.backgroundColor = darkMode ? '#333' : '#fff';
+            document.documentElement.style.color = darkMode ? '#fff' : '#333';
         });
 
-        // Display a greeting based on the current time
         const greetingElement = document.getElementById('greeting');
 
         function displayGreeting() {
@@ -236,9 +213,7 @@
         }
 
         displayGreeting();
-
-        // Optional: If you want to update the greeting periodically, uncomment the line below.
-        // setInterval(displayGreeting, 60000); // Update the greeting every minute
+    });
     </script>
 </body>
 </html>
