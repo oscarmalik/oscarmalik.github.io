@@ -4,121 +4,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Oscar's Personal Website</title>
     <style>
-    body {
-        font-family: Helvetica, sans-serif;
-        padding: 2%;
-        text-align: center;
-        font-size: 1 em;
-    }
-
-    body.dark-mode {
-        background-color: #333;
-        color: #fff;
-    }
-
-    body.dark-mode #darkModeToggle {
-        background-color: #fff;
-        color: #333;
-    }
-
-    #slideshow {
-        overflow: hidden;
-        height: 510px;
-        width: 728px;
-        margin: 0 auto;
-    }
-
-    .slide {
-        float: left;
-        height: 510px;
-        width: 728px;
-    }
-
-    .slide-wrapper {
-        width: calc(728px * 4);
-        animation: slide 10s ease infinite;
-    }
-
-    .slide:nth-child(1) {
-        background: green;
-    }
-
-    .slide:nth-child(2) {
-        background: pink;
-    }
-
-    .slide:nth-child(3) {
-        background: red;
-    }
-
-    .slide:nth-child(4) {
-        background: yellow;
-    }
-
-    @keyframes slide {
-        20% {
-            margin-left: 0px;
+        body {
+            font-family: Helvetica, sans-serif;
+            padding: 2%;
+            text-align: center;
+            font-size: 1 em;
         }
-        40% {
-            margin-left: calc(-728px * 1);
+
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
         }
-        60% {
-            margin-left: calc(-728px * 2);
+
+        body.dark-mode #darkModeToggle {
+            background-color: #fff;
+            color: #333;
         }
-        80% {
-            margin-left: calc(-728px * 3);
+
+        #slideshow {
+            overflow: hidden;
+            height: 510px;
+            width: 728px;
+            margin: 0 auto;
         }
-    }
 
-    #about {
-        padding: 20px;
-    }
+        .slide {
+            float: left;
+            height: 510px;
+            width: 728px;
+        }
 
-    #contact {
-        padding: 20px;
-    }
+        .slide-wrapper {
+            width: calc(728px * 4);
+            animation: slide 10s ease infinite;
+        }
 
-    #contactForm {
-        text-align: left;
-        margin: 0 auto;
-        max-width: 400px;
-    }
+        .slide:nth-child(1) {
+            background: green;
+        }
 
-    #contactForm label,
-    #contactForm input,
-    #contactForm textarea,
-    #contactForm button {
-        display: block;
-        margin-bottom: 10px;
-    }
+        .slide:nth-child(2) {
+            background: pink;
+        }
 
-    #contactForm input,
-    #contactForm textarea {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        .slide:nth-child(3) {
+            background: red;
+        }
 
-    #contactForm button {
-        background-color: #333;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+        .slide:nth-child(4) {
+            background: yellow;
+        }
 
-    #contactForm button:hover {
-        background-color: #555;
-    }
+        @keyframes slide {
+            20% {
+                margin-left: 0px;
+            }
+            40% {
+                margin-left: calc(-728px * 1);
+            }
+            60% {
+                margin-left: calc(-728px * 2);
+            }
+            80% {
+                margin-left: calc(-728px * 3);
+            }
+        }
+
+        #about {
+            padding: 20px;
+        }
+
+        #contact {
+            padding: 20px;
+        }
+
+        #contactForm {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        #contactForm label,
+        #contactForm input,
+        #contactForm textarea,
+        #contactForm button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #contactForm input,
+        #contactForm textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contactForm button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #contactForm button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 
 <body>
     <button id="darkModeToggle">Toggle Dark Mode</button>
     <h1 id="greeting"></h1>
+
     <div id="slideshow">
         <div class="slide-wrapper">
             <div class="slide">
@@ -150,6 +151,11 @@
             Add some information about yourself here.
             Tell your visitors about your background, interests, and anything you'd like to share.
         </p>
+        <audio id="aboutAudio" controls style="display:none;">
+            <source src="about_me.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <button id="playAboutAudio">Play Audio About Me</button>
     </section>
 
     <section id="contact">
@@ -219,6 +225,20 @@
         }
 
         displayGreeting();
+
+        // Audio player controls
+        const aboutAudio = document.getElementById('aboutAudio');
+        const playAboutAudioButton = document.getElementById('playAboutAudio');
+
+        playAboutAudioButton.addEventListener('click', () => {
+            if (aboutAudio.paused) {
+                aboutAudio.play();
+                playAboutAudioButton.textContent = 'Pause Audio';
+            } else {
+                aboutAudio.pause();
+                playAboutAudioButton.textContent = 'Play Audio About Me';
+            }
+        });
     });
     </script>
 </body>
