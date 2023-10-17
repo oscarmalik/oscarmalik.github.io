@@ -116,134 +116,150 @@
         #contactForm button:hover {
             background-color: #555;
         }
+
+        /* New Styles */
+        #container {
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 2% auto;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        #aboutAudio {
+            display: block;
+            margin: 20px auto;
+        }
     </style>
 </head>
-
 <body>
-    <button id="darkModeToggle">Toggle Dark Mode</button>
-    <h1 id="greeting"></h1>
+    <div id="container">
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+        <h1 id="greeting"></h1>
 
-    <div id="slideshow">
-        <div class="slide-wrapper">
-            <div class="slide">
-                <h1 class="slide-number">
-                    one
-                </h1>
-            </div>
-            <div class="slide">
-                <h1 class="slide-number">
-                    two
-                </h1>
-            </div>
-            <div class="slide">
-                <h1 class="slide-number">
-                    three
-                </h1>
-            </div>
-            <div class="slide">
-                <h1 class="slide-number">
-                    four
-                </h1>
+        <div id="slideshow">
+            <div class="slide-wrapper">
+                <div class="slide">
+                    <h1 class="slide-number">
+                        one
+                    </h1>
+                </div>
+                <div class="slide">
+                    <h1 class "slide-number">
+                        two
+                    </h1>
+                </div>
+                <div class="slide">
+                    <h1 class="slide-number">
+                        three
+                    </h1>
+                </div>
+                <div class="slide">
+                    <h1 class="slide-number">
+                        four
+                    </h1>
+                </div>
             </div>
         </div>
+
+        <section id="about">
+            <h2>A Line About Me (Refresh The Page To See Another)</h2>
+            <p id="aboutParagraph">
+                Add some information about yourself here.
+                Tell your visitors about your background, interests, and anything you'd like to share.
+            </p>
+            <audio id="aboutAudio" controls webkit-playsinline style="display:none;">
+                <source src="about_me.mp3" type="audio/mp3">
+                <source src="about_me.m4a" type="audio/m4a">
+                Your browser does not support the audio element.
+            </audio>
+            <button id="playAboutAudio">Play Audio About Me</button>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form id="contactForm" action="https://formspree.io/f/mrgwbydn" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
     </div>
 
-    <section id="about">
-        <h2>A Line About Me (Refresh The Page To See Another)</h2>
-        <p id="aboutParagraph">
-            Add some information about yourself here.
-            Tell your visitors about your background, interests, and anything you'd like to share.
-        </p>
-        <audio id="aboutAudio" controls webkit-playsinline style="display:none;">
-            <source src="about_me.mp3" type="audio/mp3">
-            <source src="about_me.m4a" type="audio/m4a">
-            Your browser does not support the audio element.
-        </audio>
-        <button id="playAboutAudio">Play Audio About Me</button>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form id="contactForm" action="https://formspree.io/f/mrgwbydn" method="post">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const aboutParagraph = document.getElementById("aboutParagraph");
-        const sentences = [
-            "I am passionate about finance and technology; I think that cryptocurrency has made great strides but due to the lack of regulation, I haven't felt comfortable investing in them over securities.",
-            "In my free time, I enjoy reading/learning about financial history and completing personal projects; I especially enjoy learning about the lasting impact of the housing crash and effects it's had on government regulation.",
-            "I am currently preparing to take my CFA level 1 test in November and am getting ready for the Winter 2024 recruitment cycle.",
-            "I love following global financial markets and discovering new publically traded companies I wasn't aware of.",
-            "My hobbies include playing/following basketball, going to the gym, and exploring new places/restaurants.",
-            "If finance, tech, and money didn't exist, I think I would be a very competent municipal politician.",
-            "I would be very interested to hear your thoughts on current market conditions; feel free to send me a message!",
-            "I am fascinated by financial markets and all of the different investment strategies used to obtain a profit.",
-            "I believe in the power of teamwork and think that a strong team that helps each other through difficult situations results in a lower turnover rate.",
-            "I am an advocate for environmental sustainability and think that even though ESG investing isn't the most lucrative, it can still be a large chunk of a successful portfolio."
-        ];
+        document.addEventListener("DOMContentLoaded", function() {
+            const aboutParagraph = document.getElementById("aboutParagraph");
+            const sentences = [
+                "I am passionate about finance and technology; I think that cryptocurrency has made great strides but due to the lack of regulation, I haven't felt comfortable investing in them over securities.",
+                "In my free time, I enjoy reading/learning about financial history and completing personal projects; I especially enjoy learning about the lasting impact of the housing crash and effects it's had on government regulation.",
+                "I am currently preparing to take my CFA level 1 test in November and am getting ready for the Winter 2024 recruitment cycle.",
+                "I love following global financial markets and discovering new publicly traded companies I wasn't aware of.",
+                "My hobbies include playing/following basketball, going to the gym, and exploring new places/restaurants.",
+                "If finance, tech, and money didn't exist, I think I would be a very competent municipal politician.",
+                "I would be very interested to hear your thoughts on current market conditions; feel free to send me a message!",
+                "I am fascinated by financial markets and all of the different investment strategies used to obtain a profit.",
+                "I believe in the power of teamwork and think that a strong team that helps each other through difficult situations results in a lower turnover rate.",
+                "I am an advocate for environmental sustainability and think that even though ESG investing isn't the most lucrative, it can still be a large chunk of a successful portfolio."
+            ];
 
-        function getRandomSentence() {
-            return sentences[Math.floor(Math.random() * sentences.length)];
-        }
-
-        function updateAboutParagraph() {
-            const randomSentence = getRandomSentence();
-            aboutParagraph.textContent = randomSentence;
-        }
-
-        updateAboutParagraph();
-
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle("dark-mode");
-        });
-
-        const greetingElement = document.getElementById('greeting');
-
-        function displayGreeting() {
-            const date = new Date();
-            const hours = date.getHours();
-
-            let greeting;
-            if (hours < 12) {
-                greeting = 'Good Morning!';
-            } else if (hours < 18) {
-                greeting = 'Good Afternoon!';
-            } else {
-                greeting = 'Good Evening!';
+            function getRandomSentence() {
+                return sentences[Math.floor(Math.random() * sentences.length)];
             }
 
-            greetingElement.textContent = greeting;
-        }
-
-        displayGreeting();
-
-        // Audio player controls
-        const aboutAudio = document.getElementById('aboutAudio');
-        const playAboutAudioButton = document.getElementById('playAboutAudio');
-
-        playAboutAudioButton.addEventListener('click', () => {
-            if (aboutAudio.paused) {
-                aboutAudio.play();
-                playAboutAudioButton.textContent = 'Pause Audio';
-            } else {
-                aboutAudio.pause();
-                playAboutAudioButton.textContent = 'Play Audio About Me';
+            function updateAboutParagraph() {
+                const randomSentence = getRandomSentence();
+                aboutParagraph.textContent = randomSentence;
             }
+
+            updateAboutParagraph();
+
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle("dark-mode");
+            });
+
+            const greetingElement = document.getElementById('greeting');
+
+            function displayGreeting() {
+                const date = new Date();
+                const hours = date.getHours();
+
+                let greeting;
+                if (hours < 12) {
+                    greeting = 'Good Morning!';
+                } else if (hours < 18) {
+                    greeting = 'Good Afternoon!';
+                } else {
+                    greeting = 'Good Evening!';
+                }
+
+                greetingElement.textContent = greeting;
+            }
+
+            displayGreeting();
+
+            // Audio player controls
+            const aboutAudio = document.getElementById('aboutAudio');
+            const playAboutAudioButton = document.getElementById('playAboutAudio');
+
+            playAboutAudioButton.addEventListener('click', () => {
+                if (aboutAudio.paused) {
+                    aboutAudio.play();
+                    playAboutAudioButton.textContent = 'Pause Audio';
+                } else {
+                    aboutAudio.pause();
+                    playAboutAudioButton.textContent = 'Play Audio About Me';
+                }
+            });
         });
-    });
     </script>
 </body>
 </html>
