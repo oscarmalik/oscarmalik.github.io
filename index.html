@@ -139,6 +139,27 @@
     </style>
 </head>
 <body>
+    <div id="pdf-slides">
+        <div class="pdf-slide" onclick="openPDFViewer('path/to/your/pdf1.pdf')">
+            <!-- Thumbnail or first page of PDF 1 -->
+        </div>
+        <div class="pdf-slide" onclick="openPDFViewer('path/to/your/pdf2.pdf')">
+            <!-- Thumbnail or first page of PDF 2 -->
+        </div>
+        <!-- Add more slides as needed -->
+    </div>
+    
+    <!-- PDF Viewer Modal (hidden initially) -->
+    <div id="pdf-viewer-modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <canvas id="pdf-canvas"></canvas>
+        <div id="pdf-controls">
+            <button id="prev-page">Previous Page</button>
+            <span id="page-num"></span>
+            <button id="next-page">Next Page</button>
+        </div>
+    </div>
+
     <!-- Navigation Bar -->
     <nav>
         <div id="nav-logo">Oscar's Website</div>
@@ -217,16 +238,16 @@
         document.addEventListener("DOMContentLoaded", function() {
             const aboutParagraph = document.getElementById("aboutParagraph");
             const sentences = [
-                "I am passionate about finance and technology; I think that cryptocurrency has made great strides but due to the lack of regulation, I haven't felt comfortable investing in them over securities.",
-                "In my free time, I enjoy reading/learning about financial history and completing personal projects; I especially enjoy learning about the lasting impact of the housing crash and effects it's had on government regulation.",
-                "I am currently preparing to take my CFA level 1 test in November and am getting ready for the Winter 2024 recruitment cycle.",
-                "I love following global financial markets and discovering new publicly traded companies I wasn't aware of.",
-                "My hobbies include playing/following basketball, going to the gym, and exploring new places/restaurants.",
-                "If finance, tech, and money didn't exist, I think I would be a very competent municipal politician.",
+                "I am passionate about finance and technology; I think that machine learning and artificial intelligence have made great strides and are useful tools when doing due diligence on possible investment opportunities.",
+                "In my free time, I enjoy completing personal projects, and using Open AI's ChatGpt to improve my overall efficiency in life; Most recently, optimizing my workout plan to my individual body and tendencies.",
+                "I am currently preparing to take my CFA level 1 test, while also getting ready for the Summer 2024 recruitment cycle.",
+                "I love following global financial markets and discovering new investment strategies",
+                "My hobbies include playing/following basketball, working out, and exploring new places/restaurants.",
+                "If I wasn't pursuing a career in finance/tech, I think I could be a very competent politician.",
                 "I would be very interested to hear your thoughts on current market conditions; feel free to send me a message!",
-                "I am fascinated by financial markets and all of the different investment strategies used to obtain a profit.",
-                "I believe in the power of teamwork and think that a strong team that helps each other through difficult situations results in a lower turnover rate.",
-                "I am an advocate for environmental sustainability and think that even though ESG investing isn't the most lucrative, it can still be a large chunk of a successful portfolio."
+                "I am fascinated by financial markets and different investment strategies that have been successful in the past.",
+                "I believe in the power of teamwork and think that a strong team that helps each other through difficult situations builds lasting relationships.",
+                "I am an advocate for responsible investing and think that ESG should be incorporated in every investment after making calculations on returns."
             ];
 
             function getRandomSentence() {
