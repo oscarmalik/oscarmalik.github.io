@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Helvetica Neue', sans-serif;
     margin: 0;
@@ -12,6 +11,30 @@ body.dark-mode {
     background-color: #333;
     color: #fff;
 }
+
+body.dark-mode #container,
+body.dark-mode nav,
+body.dark-mode footer {
+    background-color: #444; /* Darker background for main sections */
+    color: #eee; /* Lighter text */
+}
+
+body.dark-mode a {
+    color: #ddd; /* Lighter text for links */
+}
+
+body.dark-mode button {
+    background-color: #555; /* Darker background for buttons */
+    color: #fff; /* White text for buttons */
+}
+
+body.dark-mode #contactForm input,
+body.dark-mode #contactForm textarea {
+    background-color: #555; /* Darker background for form elements */
+    color: #fff; /* White text for form elements */
+    border-color: #666; /* Darker border for form elements */
+}
+
 
 #container {
     max-width: 960px;
