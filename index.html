@@ -1,313 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles.css" /> 
-    <title>Oscar's Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bIurt</title>
     <style>
         body {
-            font-family: Helvetica, sans-serif;
-            padding: 2%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #game-container {
             text-align: center;
-            font-size: 1em;
         }
-
-        body.dark-mode {
+        #game-board {
+            width: 400px;
+            height: 400px;
             background-color: #333;
-            color: #fff;
+            position: relative;
+            margin: 20px auto;
         }
-
-        body.dark-mode #darkModeToggle {
+        .peg {
+            width: 10px;
+            height: 10px;
             background-color: #fff;
-            color: #333;
+            border-radius: 50%;
+            position: absolute;
         }
-
-        #container {
-            background-color: #f7f7f7;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin: 2% auto;
-            padding: 20px;
-            max-width: 800px;
+        .ball {
+            width: 20px;
+            height: 20px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
         }
-
-        #slideshow {
-            overflow: hidden;
-            height: 510px;
-            width: 728px;
-            margin: 0 auto;
+        .multiplier {
+            width: 50px;
+            height: 30px;
+            background-color: #00ff00;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
         }
-
-        .slide {
-            float: left;
-            height: 510px;
-            width: 728px;
-        }
-
-        .slide-wrapper {
-            width: calc(728px * 4);
-            animation: slide 10s ease infinite;
-        }
-
-        .slide:nth-child(1) {
-            background: green;
-        }
-
-        .slide:nth-child(2) {
-            background: pink;
-        }
-
-        .slide:nth-child(3) {
-            background: red;
-        }
-
-        .slide:nth-child(4) {
-            background: yellow;
-        }
-
-        @keyframes slide {
-            20% {
-                margin-left: 0px;
-            }
-            40% {
-                margin-left: calc(-728px * 1);
-            }
-            60% {
-                margin-left: calc(-728px * 2);
-            }
-            80% {
-                margin-left: calc(-728px * 3);
-            }
-        }
-
-        #about {
-            padding: 20px;
-        }
-
-        #contact {
-            padding: 20px;
-        }
-
-        #contactForm {
-            text-align: left;
-            margin: 0 auto;
-            max-width: 400px;
-        }
-
-        #contactForm label,
-        #contactForm input,
-        #contactForm textarea,
-        #contactForm button {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        #contactForm input,
-        #contactForm textarea {
-            width: 100%;
-            padding: 10px;
+        button {
             font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        #contactForm button {
-            background-color: #333;
-            color: #fff;
             padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
-        }
-
-        #contactForm button:hover {
-            background-color: #555;
-        }
-
-       
-        #aboutAudio {
-            display: block;
-            margin: 20px auto;
-        }
-
-        #githubButton {
-            display: block;
-            margin: 20px auto;
         }
     </style>
 </head>
 <body>
-    <div id="pdf-slides">
-        <div class="pdf-slide" onclick="openPDFViewer('path/to/your/pdf1.pdf')">
-            <!-- Thumbnail or first page of PDF 1 -->
-        </div>
-        <div class="pdf-slide" onclick="openPDFViewer('path/to/your/pdf2.pdf')">
-            <!-- Thumbnail or first page of PDF 2 -->
-        </div>
-        <!-- Add more slides as needed -->
+    <div id="game-container">
+        <h1>Plinko Game</h1>
+        <p>Money: $<span id="money">100</span></p>
+        <button id="drop-ball">Drop Ball ($1)</button>
+        <div id="game-board"></div>
     </div>
-    
-    <!-- PDF Viewer Modal (hidden initially) -->
-    <div id="pdf-viewer-modal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <canvas id="pdf-canvas"></canvas>
-        <div id="pdf-controls">
-            <button id="prev-page">Previous Page</button>
-            <span id="page-num"></span>
-            <button id="next-page">Next Page</button>
-        </div>
-    </div>
-
-    <!-- Navigation Bar -->
-    <nav>
-        <div id="nav-logo">Oscar's Website</div>
-        <div id="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-    
-    <div id="container">
-        <button id="darkModeToggle">Toggle Dark Mode</button>
-        <h1 id="greeting"></h1>
-
-        <div id="slideshow">
-            <div class="slide-wrapper">
-                <div class="slide">
-                    <h1 class="slide-number">
-                        one
-                    </h1>
-                </div>
-                <div class="slide">
-                    <h1 class "slide-number">
-                        two
-                    </h1>
-                </div>
-                <div class="slide">
-                    <h1 class="slide-number">
-                        three
-                    </h1>
-                </div>
-                <div class="slide">
-                    <h1 class="slide-number">
-                        four
-                    </h1>
-                </div>
-            </div>
-        </div>
-
-        <section id="about">
-            <h2>A Line About Me (Refresh The Page To See Another)</h2>
-            <p id="aboutParagraph">
-                Add some information about yourself here.
-                Tell your visitors about your background, interests, and anything you'd like to share.
-            </p>
-            <audio id="aboutAudio" controls webkit-playsinline style="display:none;">
-                <source src="about_me.mp3" type="audio/mp3">
-                <source src="about_me.m4a" type="audio/m4a">
-                Your browser does not support the audio element.
-            </audio>
-            <button id="playAboutAudio">Play Audio About Me</button>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <form id="contactForm" action="https://formspree.io/f/mrgwbydn" method="post">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-    </div>
-
-    <a id="githubButton" href="https://github.com/oscarmalik/Dividend_Arbitrage_Strategy" target="_blank">
-        <img src="github.png" alt="GitHub" width="50" height="50">
-    </a>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const aboutParagraph = document.getElementById("aboutParagraph");
-            const sentences = [
-                "I am passionate about finance and technology; I think that machine learning and artificial intelligence have made great strides and are useful tools when doing due diligence on possible investment opportunities.",
-                "In my free time, I enjoy completing personal projects, and using Open AI's ChatGpt to improve my overall efficiency in life; Most recently, optimizing my workout plan to my individual body and tendencies.",
-                "I am currently preparing to take my CFA level 1 test, while also getting ready for the Summer 2024 recruitment cycle.",
-                "I love following global financial markets and discovering new investment strategies",
-                "My hobbies include playing/following basketball, working out, and exploring new places/restaurants.",
-                "If I wasn't pursuing a career in finance/tech, I think I could be a very competent politician.",
-                "I would be very interested to hear your thoughts on current market conditions; feel free to send me a message!",
-                "I am fascinated by financial markets and different investment strategies that have been successful in the past.",
-                "I believe in the power of teamwork and think that a strong team that helps each other through difficult situations builds lasting relationships.",
-                "I am an advocate for responsible investing and think that ESG should be incorporated in every investment after making calculations on returns."
-            ];
+        const gameBoard = document.getElementById('game-board');
+        const moneyDisplay = document.getElementById('money');
+        const dropButton = document.getElementById('drop-ball');
+        let money = 100;
 
-            function getRandomSentence() {
-                return sentences[Math.floor(Math.random() * sentences.length)];
+        // Create pegs
+        for (let row = 0; row < 7; row++) {
+            for (let col = 0; col < 7 - (row % 2); col++) {
+                const peg = document.createElement('div');
+                peg.className = 'peg';
+                peg.style.left = `${(col * 60) + (row % 2 ? 30 : 0)}px`;
+                peg.style.top = `${row * 60 + 30}px`;
+                gameBoard.appendChild(peg);
             }
+        }
 
-            function updateAboutParagraph() {
-                const randomSentence = getRandomSentence();
-                aboutParagraph.textContent = randomSentence;
-            }
-
-            updateAboutParagraph();
-
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            darkModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle("dark-mode");
-                const container = document.getElementById('container');
-                container.classList.toggle("dark-mode");
-            });
-
-            const greetingElement = document.getElementById('greeting');
-
-            function displayGreeting() {
-                const date = new Date();
-                const hours = date.getHours();
-
-                let greeting;
-                if (hours < 12) {
-                    greeting = 'Good Morning!';
-                } else if (hours < 18) {
-                    greeting = 'Good Afternoon!';
-                } else {
-                    greeting = 'Good Evening!';
-                }
-
-                greetingElement.textContent = greeting;
-            }
-
-            displayGreeting();
-
-            // Audio player controls
-            const aboutAudio = document.getElementById('aboutAudio');
-            const playAboutAudioButton = document.getElementById('playAboutAudio');
-
-            playAboutAudioButton.addEventListener('click', () => {
-                if (aboutAudio.paused) {
-                    aboutAudio.play();
-                    playAboutAudioButton.textContent = 'Pause Audio';
-                } else {
-                    aboutAudio.pause();
-                    playAboutAudioButton.textContent = 'Play Audio About Me';
-                }
-            });
+        // Create multipliers
+        const multipliers = [5, 2, 1.5, 0.5, 0.5, 1.5, 2, 5];
+        multipliers.forEach((mult, index) => {
+            const multiplier = document.createElement('div');
+            multiplier.className = 'multiplier';
+            multiplier.textContent = `x${mult}`;
+            multiplier.style.left = `${index * 50}px`;
+            gameBoard.appendChild(multiplier);
         });
-    </script>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2023 Oscar's Personal Website</p>
-    </footer>
-    </body>
-    
+        dropButton.addEventListener('click', dropBall);
+
+        function dropBall() {
+            if (money < 1) {
+                alert("You don't have enough money to drop a ball!");
+                return;
+            }
+
+            money -= 1;
+            updateMoneyDisplay();
+
+            const ball = document.createElement('div');
+            ball.className = 'ball';
+            ball.style.left = '190px';
+            gameBoard.appendChild(ball);
+
+            let position = 190;
+            let row = 0;
+            const interval = setInterval(() => {
+                row++;
+                position += (Math.random() > 0.5 ? 30 : -30);
+                ball.style.left = `${position}px`;
+                ball.style.top = `${row * 60}px`;
+
+                if (row === 7) {
+                    clearInterval(interval);
+                    const multiplierIndex = Math.floor(position / 50);
+                    const winnings = multipliers[multiplierIndex];
+                    money += winnings;
+                    updateMoneyDisplay();
+                    setTimeout(() => {
+                        gameBoard.removeChild(ball);
+                        alert(`You won $${winnings.toFixed(2)}!`);
+                    }, 500);
+                }
+            }, 500);
+        }
+
+        function updateMoneyDisplay() {
+            moneyDisplay.textContent = money.toFixed(2);
+        }
+    </script>
+</body>
 </html>
